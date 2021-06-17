@@ -1,0 +1,15 @@
+.visualizer {
+  display: flex;
+  align-items: flex-end;
+}
+
+.col {
+  float: left;
+  width: 2em;
+  margin: 0.2em;
+}
+
+.bar {
+  background-color: #a7dac4;
+  margin-bottom: 0.5em;
+}
