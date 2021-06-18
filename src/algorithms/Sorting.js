@@ -5,21 +5,22 @@ const Sorting = {
     for (let i = 0; i < n; i++) {
       // Find the minimum value in the array from i...n
       let minIndex = i;
+      let minVal = arr[minIndex];
       for (let j = i + 1; j < n; j++) {
-        if (arr[j] < arr[minIndex]) {
+        let val = arr[j];
+        if (val < minVal) {
           minIndex = j;
+          minVal = val;
         }
       }
 
       // Swap the minimum value's position with the ith element
       let temp = arr[i];
-      arr[i] = arr[minIndex];
+      arr[i] = minVal;
       arr[minIndex] = temp;
     }
-
-    return arr;
   },
-  
+
 }
 
 export default Sorting;

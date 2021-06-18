@@ -13,3 +13,11 @@
   background-color: #a7dac4;
   margin-bottom: 0.5em;
 }
+
+.bar-set {
+  background-color: #55aaff;
+}
+
+.bar-get {
+  background-color: #a7ffc4;
+}
