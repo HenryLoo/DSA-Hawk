@@ -1,23 +1,32 @@
-.visualizer {
+.Visualizer {
   display: flex;
-  align-items: flex-end;
+  height: 100%;
 }
 
-.col {
-  float: left;
-  width: 2em;
+.Visualizer-col {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   margin: 0.2em;
+  font-size: calc(10px + 0.5vmin);
+  text-align: center;
+  flex-grow: 1;
 }
 
-.bar {
+.Visualizer-space {
+  flex-grow: 1;
+}
+
+.Visualizer-bar {
   background-color: #a7dac4;
   margin-bottom: 0.5em;
+  transition: height 100ms ease-in;
 }
 
-.bar-set {
+.Visualizer-bar-set {
   background-color: #55aaff;
 }
 
-.bar-get {
-  background-color: #a7ffc4;
+.Visualizer-bar-get {
+  background-color: #66ffc4;
 }

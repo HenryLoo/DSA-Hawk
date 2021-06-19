@@ -15,15 +15,13 @@ class Visualizer extends React.Component {
     );
 
     const LENGTH = 10;
-    const MAX_VAL = 100;
+    const MAX_VAL = 89;
     let stepsArr = [];
-    let arr = Array.from({length: LENGTH}, () => Math.floor(Math.random() * MAX_VAL + 1));
-    let getId;
+    let arr = Array.from({length: LENGTH}, () => Math.floor(Math.random() * MAX_VAL + 10));
     let swapIds = [];
     let proxy = new Proxy(arr, {
       get: function(target, key) {
         //console.log('get ' + key + ' ' + target);
-        getId = key;
         stepsArr.push({getId: key, setId: [], vals: target.slice()});
         return target[key];
       },
@@ -31,7 +29,7 @@ class Visualizer extends React.Component {
         //console.log('set ' + key + ' ' + val + ' ' + target);
         target[key] = val;
         swapIds.push(key);
-        if (swapIds.length == 2) {
+        if (swapIds.length === 2) {
           stepsArr.push({getId: null, setId: swapIds.slice(), vals: target.slice()});
           swapIds = [];
         }
@@ -68,14 +66,16 @@ class Visualizer extends React.Component {
       return null;
 
     return (
-      <div className="visualizer">
+      <div className="Visualizer">
         {this.state.steps[this.state.currentStep].vals.map((val, i) => (
-          <div className="col">
+          <div className="Visualizer-col" key={i}>
+            <div className="Visualizer-space"></div>
             <div
-              className={`bar
-                ${(this.state.steps[this.state.currentStep].setId.includes(i.toString()) && `bar-set`) ||
-                ((this.state.steps[this.state.currentStep].getId == i) && `bar-get`)}`}
-              style={{height: `${val * 4}px`}}>
+              className={`Visualizer-bar
+                ${this.state.steps[this.state.currentStep].setId.includes(i.toString()) ? "Visualizer-bar-set" : ""}
+                ${this.state.steps[this.state.currentStep].getId === i.toString() ? "Visualizer-bar-get" : ""}
+              `}
+              style={{height: `${val}%`}}>
             </div>
             <span>{val}</span>
           </div>
