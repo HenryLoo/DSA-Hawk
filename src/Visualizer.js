@@ -17,19 +17,24 @@ class Visualizer extends React.Component {
     const LENGTH = 10;
     const MAX_VAL = 100;
     let stepsArr = [];
-    let arr = Array.from({length: LENGTH}, () => Math.floor(Math.random() * MAX_VAL));
+    let arr = Array.from({length: LENGTH}, () => Math.floor(Math.random() * MAX_VAL + 1));
     let getId;
+    let swapIds = [];
     let proxy = new Proxy(arr, {
       get: function(target, key) {
         //console.log('get ' + key + ' ' + target);
         getId = key;
-        stepsArr.push({getId: key, vals: target.slice()});
+        stepsArr.push({getId: key, setId: [], vals: target.slice()});
         return target[key];
       },
       set: function(target, key, val, receiver) {
         //console.log('set ' + key + ' ' + val + ' ' + target);
         target[key] = val;
-        stepsArr.push({getId: getId, setId: key, vals: target.slice()});
+        swapIds.push(key);
+        if (swapIds.length == 2) {
+          stepsArr.push({getId: null, setId: swapIds.slice(), vals: target.slice()});
+          swapIds = [];
+        }
         return true;
       }
     });
@@ -67,7 +72,9 @@ class Visualizer extends React.Component {
         {this.state.steps[this.state.currentStep].vals.map((val, i) => (
           <div className="col">
             <div
-              className={`bar ${((this.state.steps[this.state.currentStep].setId == i) && `bar-set`) || ((this.state.steps[this.state.currentStep].getId == i) && `bar-get`)}`}
+              className={`bar
+                ${(this.state.steps[this.state.currentStep].setId.includes(i.toString()) && `bar-set`) ||
+                ((this.state.steps[this.state.currentStep].getId == i) && `bar-get`)}`}
               style={{height: `${val * 4}px`}}>
             </div>
             <span>{val}</span>
