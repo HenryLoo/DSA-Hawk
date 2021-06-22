@@ -4,7 +4,7 @@
       "header header"
       "display side"
       "footer footer";
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   grid-template-rows: auto 1fr auto;
   column-gap: 1%;
   color: #eee;
@@ -21,11 +21,13 @@
 .App-display {
   grid-area: display;
   padding: 1em;
+  overflow: auto;
 }
 
 .App-side {
   grid-area: side;
   padding: 1em;
+  overflow: auto;
 }
 
 .App-header {

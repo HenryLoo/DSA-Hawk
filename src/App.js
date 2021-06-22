@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 
 import Visualizer from './Visualizer';
+import TabMenu from './TabMenu';
 import Controls from './Controls';
 import Sorting from './dsa/Sorting'
 
@@ -12,7 +13,7 @@ class App extends React.Component {
     this.state = {
       currentStep: 0,
       steps: [],
-      currentDSA: Sorting.selectionSort,
+      currentDSA: Sorting.quickSort,
       isPlaying: false
     };
 
@@ -126,11 +127,13 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.currentDSA.toString());
     return (
       <div className="App">
         <div className="App-header App-dark">
           <span>DSA-Hawk</span>
+        </div>
+        <div className="App-tabs">
+          <TabMenu />
         </div>
         <div className="App-display App-light">
           <Visualizer steps={this.state.steps[this.state.currentStep]}/>
