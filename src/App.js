@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 
 import Visualizer from './Visualizer';
+import Controls from './Controls';
 import Sorting from './dsa/Sorting'
 
 class App extends React.Component {
@@ -11,23 +12,25 @@ class App extends React.Component {
     this.state = {
       currentStep: 0,
       steps: [],
-      currentDSA: Sorting.selectionSort
+      currentDSA: Sorting.selectionSort,
+      isPlaying: false
     };
 
-    this.initializeSteps = this.initializeSteps.bind(this);
+    this.handlePlay = this.handlePlay.bind(this);
+    this.handlePause = this.handlePause.bind(this);
+    this.handleStop = this.handleStop.bind(this);
+    this.handleStepForward = this.handleStepForward.bind(this);
+    this.handleStepBackward = this.handleStepBackward.bind(this);
+    this.handleStepEnd = this.handleStepEnd.bind(this);
   }
 
   componentDidMount() {
-    this.timerID = setInterval(
-      () => this.step(),
-      500
-    );
-
     this.initializeSteps(this.state.currentDSA);
+    this.handlePlay();
   }
 
   componentWillUnmount() {
-    clearInterval(this.timerID);
+    this.handleStop();
   }
 
   step() {
@@ -39,7 +42,7 @@ class App extends React.Component {
         }));
       }
       else {
-        clearInterval(this.timerID);
+        this.stopTimer();
       }
     }
   }
@@ -75,6 +78,53 @@ class App extends React.Component {
     });
   }
 
+  handlePlay() {
+    this.timerID = setInterval(
+      () => this.step(),
+      500
+    );
+
+    this.setState({ isPlaying: true });
+  }
+
+  handlePause() {
+    this.stopTimer();
+  }
+
+  handleStop() {
+    this.stopTimer();
+    this.setState({ currentStep: 0 });
+  }
+
+  stopTimer() {
+    clearInterval(this.timerID);
+    this.setState({ isPlaying: false });
+  }
+
+  handleStepForward() {
+    this.setState((prevState, props) => ({
+      currentStep: Math.min(prevState.currentStep + 1, prevState.steps.length - 1)
+    }));
+
+    this.stopTimer();
+  }
+
+  handleStepBackward() {
+    this.setState((prevState, props) => ({
+      currentStep: Math.max(prevState.currentStep - 1, 0)
+    }));
+
+    this.stopTimer();
+  }
+
+  handleStepEnd() {
+    this.setState((prevState, props) => ({
+      currentStep: prevState.steps.length - 1
+    }));
+
+    this.stopTimer();
+  }
+
   render() {
     console.log(this.state.currentDSA.toString());
     return (
@@ -91,7 +141,17 @@ class App extends React.Component {
           </code>
         </div>
         <div className="App-footer App-dark">
-          Footer
+          <Controls
+            currentStep={this.state.currentStep}
+            maxSteps={this.state.steps.length}
+            isPlaying={this.state.isPlaying}
+            handlePlay={this.handlePlay}
+            handlePause={this.handlePause}
+            handleStop={this.handleStop}
+            handleStepForward={this.handleStepForward}
+            handleStepBackward={this.handleStepBackward}
+            handleStepEnd={this.handleStepEnd}
+          />
         </div>
       </div>
     );
