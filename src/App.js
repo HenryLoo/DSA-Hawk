@@ -1,20 +1,27 @@
 import React from 'react';
 import './App.css';
 
+import NavigationMenu from './NavigationMenu';
 import Visualizer from './Visualizer';
 import TabMenu from './TabMenu';
 import Controls from './Controls';
-import Sorting from './dsa/Sorting'
+import Sorting from './dsa/Sorting';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
+    let dsaList = [];
+    for (let key in Sorting) {
+      dsaList.push(Sorting[key]);
+    }
+
     this.state = {
       currentStep: 0,
       steps: [],
-      currentDSA: Sorting.quickSort,
-      isPlaying: false
+      dsaList: dsaList,
+      currentDSA: 0,
+      isPlaying: false,
     };
 
     this.handlePlay = this.handlePlay.bind(this);
@@ -23,11 +30,11 @@ class App extends React.Component {
     this.handleStepForward = this.handleStepForward.bind(this);
     this.handleStepBackward = this.handleStepBackward.bind(this);
     this.handleStepEnd = this.handleStepEnd.bind(this);
+    this.handleDSASelect = this.handleDSASelect.bind(this);
   }
 
   componentDidMount() {
-    this.initializeSteps(this.state.currentDSA);
-    this.handlePlay();
+    this.handleDSASelect(0);
   }
 
   componentWillUnmount() {
@@ -48,7 +55,12 @@ class App extends React.Component {
     }
   }
 
-  initializeSteps(algorithm) {
+  initializeSteps() {
+    if (this.state.currentDSA < 0 ||
+      this.state.currentDSA >= this.state.dsaList.length) {
+      return;
+    }
+
     const LENGTH = 10;
     const MAX_VAL = 89;
     let stepsArr = [];
@@ -72,7 +84,7 @@ class App extends React.Component {
       }
     });
 
-    algorithm(proxy);
+    this.state.dsaList[this.state.currentDSA](proxy);
     this.setState({
       currentStep: 0,
       steps: stepsArr
@@ -126,11 +138,21 @@ class App extends React.Component {
     this.stopTimer();
   }
 
+  handleDSASelect(index) {
+    this.setState({
+      currentDSA: index
+    });
+
+    this.initializeSteps();
+    this.handleStop();
+  }
+
   render() {
     return (
       <div className="App">
         <div className="App-header App-dark">
-          <span>DSA-Hawk</span>
+          <NavigationMenu dsaList={this.state.dsaList} handleDSASelect={this.handleDSASelect}/>
+          <span className="App-title">DSA-Hawk</span>
         </div>
         <div className="App-tabs">
           <TabMenu />
@@ -140,7 +162,7 @@ class App extends React.Component {
         </div>
         <div className="App-side App-light">
           <code>
-            {this.state.currentDSA.toString()}
+            {this.state.dsaList[this.state.currentDSA].toString()}
           </code>
         </div>
         <div className="App-footer App-dark">

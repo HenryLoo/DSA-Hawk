@@ -1,0 +1,51 @@
+#Navigation-toggle {
+  display: none;
+}
+
+.Navigation-open {
+  float: left;
+  padding-right: 1em;
+  cursor: pointer;
+  font-size: calc(10px + 2.5vmin);
+}
+
+.Navigation-exit {
+  float: right;
+  padding: 1.2rem;
+  font-size: calc(10px + 3vmin);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.Navigation-aside {
+  position: absolute;
+  width: 30%;
+  height: calc(100vh - 2em);
+  left: calc(-32% - 2em);
+  z-index: 1;
+  padding: 1em;
+  font-size: calc(8px + 1.5vmin);
+  background-color: #223;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+  transition: left 0.5s ease-in-out;
+}
+
+.Navigation-aside li label {
+  cursor: pointer;
+}
+
+.Navigation-aside li label:hover {
+  color: #aaf;
+}
+
+#Navigation-toggle:checked ~ .Navigation-aside {
+  left: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .Navigation-aside {
+    width: 80%;
+    left: calc(-82% - 2em);
+    font-size: calc(8px + 4vmin);
+  }
+}

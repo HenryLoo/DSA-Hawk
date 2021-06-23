@@ -14,8 +14,11 @@
 
 .App-header {
   grid-area: header;
-  /* font-size: calc(10px + 3vmin); */
-  padding: 1em;
+}
+
+.App-title {
+  font-size: calc(14px + 1.5vmin);
+  font-weight: 500;
 }
 
 .App-display {
@@ -49,11 +52,6 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .App-header {
-    display: flex;
-    justify-content: center;
-  }
-
   .App {
     grid-template-areas:
         "header"

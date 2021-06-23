@@ -1,5 +1,5 @@
 import './Controls.css';
-import { FaPlay, FaPause, FaStop, FaStepBackward, FaStepForward, FaFastForward } from 'react-icons/fa'
+import { FaPlay, FaPause, FaStop, FaStepBackward, FaStepForward, FaFastForward } from 'react-icons/fa';
 
 function Controls(props) {
   let playButton = props.isPlaying === false ?
