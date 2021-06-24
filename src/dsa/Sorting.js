@@ -1,6 +1,21 @@
 const Sorting = {
 
-  selectionSort: function (arr) {
+  bubbleSort: function(arr) {
+    let n = arr.length;
+    for (let i = 0; i < n; i++) {
+      for (let j = n - 1; j > i; j--) {
+        let right = arr[j];
+        let left = arr[j - 1];
+
+        if (right < left) {
+          arr[j - 1] = right;
+          arr[j] = left;
+        }
+      }
+    }
+  },
+
+  selectionSort: function(arr) {
     let n = arr.length;
     for (let i = 0; i < n; i++) {
       let iVal = arr[i];
@@ -9,6 +24,7 @@ const Sorting = {
 
       for (let j = i + 1; j < n; j++) {
         let val = arr[j];
+
         if (val < minVal) {
           minIndex = j;
           minVal = val;
@@ -28,11 +44,13 @@ const Sorting = {
 
       while (i <= j) {
         let iVal = arr[i];
+
         while (iVal < pivot) {
           iVal = arr[++i];
         }
 
         let jVal = arr[j];
+
         while (jVal > pivot) {
           jVal = arr[--j];
         }
@@ -55,13 +73,12 @@ const Sorting = {
       }
 
       let pivotIndex = partition(arr, left, right);
-
       quickSort(arr, left, pivotIndex - 1);
       quickSort(arr, pivotIndex, right);
     }
 
     quickSort(arr, 0, arr.length - 1);
-  }
+  },
 
 }
 

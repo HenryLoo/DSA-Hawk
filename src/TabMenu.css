@@ -1,3 +1,15 @@
 .TabMenu {
-  
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.TabMenu-button {
+  text-align: center;
+  font-size: calc(16px + 2vmin);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.TabMenu-selected {
+  background-color: #55f;
 }

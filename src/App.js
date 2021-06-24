@@ -152,7 +152,8 @@ class App extends React.Component {
       <div className="App">
         <div className="App-header App-dark">
           <NavigationMenu dsaList={this.state.dsaList} handleDSASelect={this.handleDSASelect}/>
-          <span className="App-title">DSA-Hawk</span>
+          <span className="App-title">DSA-Hawk </span>
+          <span className="App-title App-selected">[{this.state.dsaList[this.state.currentDSA].name}]</span>
         </div>
         <div className="App-tabs">
           <TabMenu />

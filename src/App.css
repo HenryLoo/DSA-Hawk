@@ -21,6 +21,14 @@
   font-weight: 500;
 }
 
+.App-selected {
+  color: #aaf;
+}
+
+.App-tabs {
+  display: none;
+}
+
 .App-display {
   grid-area: display;
   padding: 1em;
@@ -55,10 +63,25 @@
   .App {
     grid-template-areas:
         "header"
+        "tabs"
         "display"
-        "side"
         "footer";
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto 2fr auto;
     column-gap: 0%;
+  }
+
+  .App-title {
+    font-size: calc(16px + 2vmin);
+  }
+
+  .App-tabs {
+    grid-area: tabs;
+    display: inherit;
+  }
+
+  .App-side {
+    grid-area: display;
+    display: none;
   }
 }

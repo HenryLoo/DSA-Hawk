@@ -8,15 +8,15 @@ function NavigationMenu(props) {
       <input type="checkbox" id="Navigation-toggle"></input>
 
       <aside className="Navigation-aside">
-        <label for="Navigation-toggle" className="Navigation-exit">X</label>
+        <label htmlFor="Navigation-toggle" className="Navigation-exit">X</label>
         <ul>
           {props.dsaList.map((dsa, i) => (
-            <li><label for="Navigation-toggle" onClick={()=>props.handleDSASelect(i)}>{dsa.name}</label></li>
+            <li key={i}><label htmlFor="Navigation-toggle" onClick={()=>props.handleDSASelect(i)}>{dsa.name}</label></li>
           ))}
         </ul>
       </aside>
 
-      <label for="Navigation-toggle" className="Navigation-open"><FaBars /></label>
+      <label htmlFor="Navigation-toggle" className="Navigation-open"><FaBars /></label>
     </div>
   );
 }
