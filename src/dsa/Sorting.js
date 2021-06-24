@@ -36,6 +36,25 @@ const Sorting = {
     }
   },
 
+  insertionSort: function(arr) {
+    let n = arr.length;
+    for (let i = 0; i < n; i++) {
+      let iVal = arr[i];
+      let j = i - 1;
+
+      for (; j >= 0; j--) {
+        let jVal = arr[j];
+        
+        if (jVal <= iVal) {
+          break;
+        }
+
+        arr[j + 1] = jVal;
+        arr[j] = iVal;
+      }
+    }
+  },
+
   quickSort: function(arr) {
     function partition(arr, left, right) {
       let pivot = arr[Math.floor((right + left) / 2)];

@@ -55,9 +55,8 @@ class App extends React.Component {
     }
   }
 
-  initializeSteps() {
-    if (this.state.currentDSA < 0 ||
-      this.state.currentDSA >= this.state.dsaList.length) {
+  initializeSteps(currentDSA) {
+    if (currentDSA < 0 || currentDSA >= this.state.dsaList.length) {
       return;
     }
 
@@ -84,7 +83,7 @@ class App extends React.Component {
       }
     });
 
-    this.state.dsaList[this.state.currentDSA](proxy);
+    this.state.dsaList[currentDSA](proxy);
     this.setState({
       currentStep: 0,
       steps: stepsArr
@@ -143,7 +142,7 @@ class App extends React.Component {
       currentDSA: index
     });
 
-    this.initializeSteps();
+    this.initializeSteps(index);
     this.handleStop();
   }
 
