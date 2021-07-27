@@ -44,8 +44,8 @@
 
 @media only screen and (max-width: 768px) {
   .Navigation-aside {
-    width: 80%;
-    left: calc(-82% - 2em);
+    width: 60%;
+    left: calc(-62% - 2em);
     font-size: calc(8px + 4vmin);
   }
 

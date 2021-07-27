@@ -62,12 +62,10 @@
 @media only screen and (max-width: 768px) {
   .App {
     grid-template-areas:
-        "header"
-        "tabs"
         "display"
-        "footer";
+        "side";
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto 2fr auto;
+    grid-template-rows: 89vh 89vh;
     column-gap: 0%;
   }
 
@@ -75,13 +73,30 @@
     font-size: calc(16px + 2vmin);
   }
 
+  .App-header {
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    height: 7vh;
+  }
+
   .App-tabs {
     grid-area: tabs;
     display: inherit;
   }
 
-  .App-side {
+  /* .App-side {
     grid-area: display;
     display: none;
+  } */
+
+  .App-footer {
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4vh;
   }
 }

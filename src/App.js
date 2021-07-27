@@ -154,9 +154,6 @@ class App extends React.Component {
           <span className="App-title">DSA-Hawk </span>
           <span className="App-title App-selected">[{this.state.dsaList[this.state.currentDSA].name}]</span>
         </div>
-        <div className="App-tabs">
-          <TabMenu />
-        </div>
         <div className="App-display App-light">
           <Visualizer steps={this.state.steps[this.state.currentStep]}/>
         </div>
