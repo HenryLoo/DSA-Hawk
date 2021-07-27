@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/dsa-hawk/static/css/main.a5ba8903.chunk.css",
+    "main.js": "/dsa-hawk/static/js/main.c5db55fe.chunk.js",
+    "main.js.map": "/dsa-hawk/static/js/main.c5db55fe.chunk.js.map",
+    "runtime-main.js": "/dsa-hawk/static/js/runtime-main.da1defa8.js",
+    "runtime-main.js.map": "/dsa-hawk/static/js/runtime-main.da1defa8.js.map",
+    "static/js/2.e8b64ce0.chunk.js": "/dsa-hawk/static/js/2.e8b64ce0.chunk.js",
+    "static/js/2.e8b64ce0.chunk.js.map": "/dsa-hawk/static/js/2.e8b64ce0.chunk.js.map",
+    "static/js/3.468ca190.chunk.js": "/dsa-hawk/static/js/3.468ca190.chunk.js",
+    "static/js/3.468ca190.chunk.js.map": "/dsa-hawk/static/js/3.468ca190.chunk.js.map",
+    "index.html": "/dsa-hawk/index.html",
+    "static/css/main.a5ba8903.chunk.css.map": "/dsa-hawk/static/css/main.a5ba8903.chunk.css.map",
+    "static/js/2.e8b64ce0.chunk.js.LICENSE.txt": "/dsa-hawk/static/js/2.e8b64ce0.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.da1defa8.js",
+    "static/js/2.e8b64ce0.chunk.js",
+    "static/css/main.a5ba8903.chunk.css",
+    "static/js/main.c5db55fe.chunk.js"
+  ]
+}
