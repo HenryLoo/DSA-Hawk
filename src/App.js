@@ -1,4 +1,5 @@
 import React from 'react';
+import beautify from 'js-beautify';
 import './App.css';
 
 import NavigationMenu from './NavigationMenu';
@@ -159,7 +160,7 @@ class App extends React.Component {
         </div>
         <div className="App-side App-light">
           <code>
-            {this.state.dsaList[this.state.currentDSA].toString()}
+            {beautify(this.state.dsaList[this.state.currentDSA].toString(), { indent_size: 2, space_in_empty_paren: true })}
           </code>
         </div>
         <div className="App-footer App-dark">
